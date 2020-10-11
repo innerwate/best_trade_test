@@ -17,10 +17,20 @@ class ProductController extends Controller
 
         return view('products', ['products' => $products]);
     }
+    public function getOne($id){
+        $product = new Product;
+        $singleProduct = $product->getSingleProduct($id);
+        return view('edit', ['singleProduct' => $singleProduct]);
+    }
     public function createNew(Request $request)
     {   
         $product = new Product;
        return $product->createProduct();
+    }
+    public function updateItem(Request $request)
+    {   
+        $product = new Product;
+       return $product->updateProduct();
     }
     public function deleteItem($id){
         $product = new Product;

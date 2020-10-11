@@ -12,6 +12,10 @@ class Product extends Model
         $products = DB::table('products')->get();
         return $products;
     }
+    public function getSingleProduct($id){
+        $product =  DB::table('products')->where('id', $id)->get();
+        return $product;
+    }
     public function createProduct(){
         $request = request();
         
@@ -33,6 +37,46 @@ class Product extends Model
             'title' => $title,
             'images'=>  implode("|",$images)
         ]);
+        if(empty($newProduct)){
+            $data['message'] = 'Failed';
+        
+        }
+        else{
+            $data['message'] = 'Success';
+        }
+        return response()->json($data);
+    }
+    public function updateProduct(){
+      
+        $request = request();
+        $id = $request->id;
+        $vendor = $request->vendor;
+        $title = $request->title;
+        $images=array();
+        $counter = 0;
+         if($files=$request->file('images')){
+             
+            foreach($files as $file){
+                $counter++;
+                $name=$file->getClientOriginalName();
+                $file->move('image',$name);
+                $images[]=$name;
+            }
+        }
+        if(!empty($images)){
+            $newProduct = DB::table('products')->where('id', $id)->update( [
+                'vendor' => $vendor,
+                'title' => $title,
+                'images'=>  implode("|",$images)
+            ]);
+        }
+        else{
+            $newProduct = DB::table('products')->where('id', $id)->update( [
+                'vendor' => $vendor,
+                'title' => $title
+            ]);
+        }
+       
         if(empty($newProduct)){
             $data['message'] = 'Failed';
         
