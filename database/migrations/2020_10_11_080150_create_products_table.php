@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('vendor', 100);
             $table->string('title', 100);
-            $table->json('images');
+            $table->string('images', 100);
             $table->timestamps();
         });
     }
