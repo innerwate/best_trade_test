@@ -30263,9 +30263,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+  $('.show_more_button').click(function (e) {
+    $(this).parent('.crud_buttons').siblings('.options').toggleClass('hide');
+  });
   $("#createForm").submit(function (e) {
-    e.preventDefault(); // avoid to execute the actual submit of the form.
-
+    e.preventDefault();
     var form = $(this)[0];
     var formData = new FormData(form);
     var url = form.action;
@@ -30275,7 +30277,6 @@ $(document).ready(function () {
       contentType: false,
       url: url,
       data: formData,
-      // serializes the form's elements.
       success: function success(data) {
         if (data.message === 'Success') {
           alert('Product was successfully created');
