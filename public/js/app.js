@@ -30307,6 +30307,26 @@ $(document).ready(function () {
       }
     });
   });
+  $("#updateForm").submit(function (e) {
+    e.preventDefault();
+    var form = $(this)[0];
+    var formData = new FormData(form);
+    var url = form.action;
+    $.ajax({
+      type: "POST",
+      processData: false,
+      contentType: false,
+      url: url,
+      data: formData,
+      success: function success(data) {
+        if (data.message === 'Success') {
+          alert('Product was successfully updated');
+        } else {
+          alert('Something wrong');
+        }
+      }
+    });
+  });
 });
 
 /***/ }),

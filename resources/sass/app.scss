@@ -139,5 +139,28 @@ table.darkTable {
   }
   .item{
       margin-bottom: 25px;
-      
+
   }
+  .home_btn{
+      margin-top: 20px;
+  }
+  .product_title{
+      font-size: 24px;
+  }
+.edit_href{
+    display: block;
+}
+.main_btn.create_btn{
+    background: #5ae05a;
+}
+.main_btn.delete_btn{
+background: #f18585;
+}
+.main_btn.edit_btn{
+    background: #a2a2f1;
+}
+.crud_buttons{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script type="text/javascript" src="{{ URL::asset('js/app.js') }}"></script>
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}" />
     <title>Laravel</title>
@@ -53,8 +54,8 @@
                         </table>
                     </div>
                     <div class="crud_buttons">
-                        <button class="main_btn edit_btn">Edit</button>
-                        <button class="main_btn delete_btn">Delete</button>
+                    <a href="/edit/{{$product->id}}" class="edit_href"> <button class="main_btn edit_btn" data-id="{{$product->id}}">Edit</button></a>
+                        <button class="main_btn delete_btn" data-id="{{$product->id}}">Delete</button>
                         <button class="main_btn show_more_button">Show more</button>
 
                     </div>
@@ -63,7 +64,9 @@
             </div>
         </div>
         <div class="row">
-            <a href="/create" class="main_btn create_btn">Create new</a>
+            <div class="create_button_div col-md-4"><a href="/create" ><button class="main_btn create_btn">Create new</button>
+</a></div>
+            
         </div>
     </div>
 

@@ -37,7 +37,7 @@
                     </div>
                     <button type="submit" class="main_btn create_btn">Create new</button>
                 </form>
-                <a href="/" type="" class="main_btn home_btn">Home</a>
+                <a href="/" type="" ><button class="main_btn home_btn">Home</button></a>
             </div>
         </div>
 
