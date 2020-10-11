@@ -17,3 +17,6 @@ Route::get('/', 'ProductController@getAll');
 Route::get('/create', function () {
     return view('create');
 });
+Route::get('/edit/{id}', 'ProductController@getOne');
+Route::post('/create/create_product', 'ProductController@createNew');
+Route::delete('/delete/{id}', 'ProductController@deleteItem');

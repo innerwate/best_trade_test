@@ -19,12 +19,11 @@ class ProductController extends Controller
     }
     public function createNew(Request $request)
     {   
-        //print_r($request);
         $product = new Product;
-        
        return $product->createProduct();
-        //$product->createProduct();
-        
-
+    }
+    public function deleteItem($id){
+        $product = new Product;
+        return $product->deleteProduct($id);
     }
 }

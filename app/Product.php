@@ -42,6 +42,18 @@ class Product extends Model
         }
         return response()->json($data);
     }
+    public function deleteProduct($id){
+        $deletedProduct =  DB::table('products')
+        ->where('id', $id)
+        ->delete();
+        if(!empty($deletedProduct)){
+            $data['message'] = 'Successfully';
+        }
+        else{
+            $data['message'] = 'Failed';
+        }
+        return response()->json($data);
+    }
     
 
 }
